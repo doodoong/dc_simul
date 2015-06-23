@@ -6,14 +6,17 @@ public class Station {
 	private int packetGenerationTime;
 	private int numTxPacket;
 	private int totlalPacketDelay;
-	private boolean waitingAck;
+	private boolean ack;
+	private boolean buffer;
+
 
 	public Station() {
 		this.packetGeneration = false;
 		this.packetGenerationTime = 0;
 		this.numTxPacket = 0;
 		this.totlalPacketDelay = 0;
-		this.waitingAck = false;
+		this.ack = false;
+		this.buffer = false;
 	}
 
 	// setter and updater
@@ -31,6 +34,14 @@ public class Station {
 
 	public void updatePacketDelay(int slotTime) {
 		totlalPacketDelay += (slotTime - packetGenerationTime);
+	}
+
+	public void waitingAck(boolean ack) {
+		ack = ack;
+	}
+
+	public void setBuffer(boolean buffer) {
+		buffer = buffer;
 	}
 
 	// getter

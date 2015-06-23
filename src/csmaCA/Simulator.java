@@ -9,10 +9,10 @@ public class Simulator {
 	private int txCollisionTime = 0;
 	private int txSuccessTime = 0;
 
-	private double delta = 0;
+	static double delta = 0.5;
 	private double pvalue = 0;
 	private int numStation = 0;
-	private int slotThreshold = 0;
+	static int slotThreshold = 10;
 
 	private int totalDelay = 0;
 	private double throughput;
@@ -20,12 +20,12 @@ public class Simulator {
 
 	private ArrayList<Station> stationList;
 
-	public Simulator(double delta, double pvalue, int numStation, int slotThreshold)
+	public Simulator(double pvalue, int numStation)
 	{
-		this.delta = delta;
+//		this.delta = delta;
 		this.pvalue = pvalue;
 		this.numStation = numStation;
-		this.slotThreshold = slotThreshold;
+//		this.slotThreshold = slotThreshold;
 
 		stationList = new ArrayList<Station>();
 		for(int i = 0; i < numStation; i++) {
@@ -60,10 +60,10 @@ public class Simulator {
 				//when station has a packet to transmit
 				//it transmit the packet with probability less than 'pvalue'
 				if(station.getPacketGeneration()) {
-					if(random.nextDouble() <= pvalue) {
+//					if(random.nextDouble() <= pvalue) {
 						txTrial++;
 						txSationNumber = i;
-					}
+//					}
 				}
 			}
 
